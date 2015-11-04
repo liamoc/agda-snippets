@@ -10,6 +10,13 @@ packages:
 # Packages to be pulled from upstream that are not in the resolver (e.g., acme-missiles-0.3)
 extra-deps:
 - Agda-2.4.2.4
+- QuickCheck-2.8.1
+- binary-0.7.6.1
+- boxes-0.1.4
+- data-hash-0.2.0.1
+- equivalence-0.3.1
+- geniplate-mirror-0.7.1
+- haskeline-0.7.2.1
 
 # Override default flag values for local packages and extra-deps
 flags: {}
