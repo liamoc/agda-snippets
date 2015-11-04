@@ -1,5 +1,5 @@
 name:                agda-snippets
-version:             2.4.2.4
+version:             2.4.3
 synopsis:            Render just the Agda snippets of a literate Agda file to HTML
 description:         This library provides a very simple function that translates just the code blocks
                      of a literate Agda file to colourised, hyperlinked HTML. The output of this
