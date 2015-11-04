@@ -11,6 +11,65 @@ that can be used as a standalone file processor.
 The location of library source hyperlinks is configurable, as is the CSS class
 given to Agda code blocks.
 
-This package is pinned to particular Agda versions, and therefore does not 
-obey the PVP, as Agda does not. You should use whichever version of this library
-corresponds to the Agda version you wish to use.
+Usually, I try to keep the development version of this library working with the
+development version of Agda. This is not always 100% reliable, as I only update 
+the library when I update my Agda installation. It will always work with the latest
+stable version of Agda.
+
+Stable releases of this library are published on Hackage, as per usual, and these
+releases are fixed to particular Agda versions. The version of the library matches
+the exact Agda version it corresponds to, and thus it doesn't follow the PVP.
+
+To see what the output looks like, you can look at [[http://liamoc.net/posts/2015-08-23-verified-compiler.html][this article]] on my blog, which
+makes use of this library to render the Agda snippets.
+
+** Building/Installing
+
+You can install this library and the document processing tool from Hackage 
+using ~stack~:
+
+#+BEGIN_SRC sh
+stack install agda-snippets
+#+END_SRC
+
+or using Cabal:
+
+#+BEGIN_SRC sh
+cabal install agda-snippets
+#+END_SRC
+
+If you want to use the development version from this repository,
+you will have to have the correct version of Agda already available. The simplest
+way to do this is to edit ~stack.yaml~, to point to the location of your Agda
+repository, and use ~stack~ to build the library.
+
+** Using
+
+*** The executable
+
+The executable ~agda-snippets~, once installed, can be invoked according to the following schema:
+
+#+BEGIN_SRC
+agda-snippets input-file.lagda output-file css-class-name /lib/uri/ [agda options]
+#+END_SRC
+
+If you're using ~stack~, you may wish to invoke a local copy using ~stack exec~:
+
+#+BEGIN_SRC
+stack exec agda-snippets -- input-file.lagda output-file css-class-name /lib/uri/ [agda options]
+#+END_SRC
+
+The arguments are as follows:
+
+- ~input-file.lagda~ - The Literate Agda file to process.
+- ~output-file~ - Where to write the output text, where code blocks are replaced with HTML.
+- ~css-class-name~ - The name of the CSS class to assign to Agda code blocks.
+- ~/lib/uri/~  - The base URI where Agda library listings are located. This is for hyperlinks for sources imported from (e.g) the Agda standard library.
+- ~[agda options]~ - Any additional options are passed directly into Agda.
+
+*** As a library
+
+The library interface consists of a single function, ~renderAgdaSnippets~, which has an interface more or less exactly like the executable above.
+
+See the [[http://hackage.haskell.org/package/agda-snippets][Haddocks]] in the Hackage listing for more details.
+
