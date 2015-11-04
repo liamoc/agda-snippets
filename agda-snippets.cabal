@@ -25,7 +25,7 @@ license-file:        LICENSE
 author:              Liam O'Connor
 maintainer:          liamoc@cse.unsw.edu.au
 copyright:           Liam O'Connor, 2015
-category:            Web
+category:            Dependent Types
 build-type:          Simple
 -- extra-source-files:
 cabal-version:       >=1.10
