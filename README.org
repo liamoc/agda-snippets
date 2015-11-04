@@ -1,0 +1,16 @@
+* Agda Snippets
+
+This library provides a very simple function that translates just the code blocks
+of a literate Agda file to colourised, hyperlinked HTML. The output of this
+can then be run through Pandoc or other document processors to allow literate 
+Agda to be comfortably written in any format that allows inline HTML snippets.
+
+There is also a simple command-line application (~agda-snippets~) included 
+that can be used as a standalone file processor.
+
+The location of library source hyperlinks is configurable, as is the CSS class
+given to Agda code blocks.
+
+This package is pinned to particular Agda versions, and therefore does not 
+obey the PVP, as Agda does not. You should use whichever version of this library
+corresponds to the Agda version you wish to use.
