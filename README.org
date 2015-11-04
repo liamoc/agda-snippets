@@ -73,3 +73,7 @@ The library interface consists of a single function, ~renderAgdaSnippets~, which
 
 See the [[http://hackage.haskell.org/package/agda-snippets][Haddocks]] in the Hackage listing for more details.
 
+
+** Credits
+
+Some parts of this code were based on a few snippets written by Daniel Peebles a long time ago. Not sure how much of it is still his code, but thanks are due to him.
