@@ -8,6 +8,9 @@ module Hakyll.Contrib.Agda
          -- * Building Blocks
        , defaultFileType
        , readLiterateAgda
+         -- * Command line options
+       , CommandLineOptions (..)
+       , defaultOptions
        ) where
 
 

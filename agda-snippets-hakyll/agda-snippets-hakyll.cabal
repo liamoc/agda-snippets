@@ -1,5 +1,5 @@
 name:                agda-snippets-hakyll
-version:             0.1
+version:             0.1.1
 synopsis:            Literate Agda support using agda-snippets, for Hakyll pages.
 description:         This library provides basic functions to use in Hakyll web-pages to generate
                      colourised and hyperlinked Agda source code snippets for literate Agda documents.
