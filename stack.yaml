@@ -6,7 +6,8 @@ resolver: lts-3.11
 # Local packages, usually specified by relative directory name
 # I've added my local installation of development Agda here. Change it to your development Agda path.
 packages:
-- '.'
+- 'agda-snippets'
+- 'agda-snippets-hakyll'
 - '../../../langs/agda'
 # Packages to be pulled from upstream that are not in the resolver (e.g., acme-missiles-0.3)
 extra-deps: []

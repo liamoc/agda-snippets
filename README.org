@@ -1,8 +1,17 @@
-[[https://travis-ci.org/liamoc/agda-snippets][file:https://travis-ci.org/liamoc/agda-snippets.svg]] [[http://hackage.haskell.org/package/agda-snippets][file:https://img.shields.io/hackage/v/agda-snippets.svg]]  [[http://packdeps.haskellers.com/reverse/agda-snippets][file:https://img.shields.io/hackage-deps/v/agda-snippets.svg]] [[http://haskell.org][file:https://img.shields.io/badge/language-Haskell-blue.svg]] [[https://github.com/liamoc/agda-snippets/blob/master/LICENSE][file:http://img.shields.io/badge/license-BSD3-brightgreen.svg]]
+[[https://travis-ci.org/liamoc/agda-snippets][file:https://travis-ci.org/liamoc/agda-snippets.svg]] [[http://haskell.org][file:https://img.shields.io/badge/language-Haskell-blue.svg]] [[https://github.com/liamoc/agda-snippets/blob/master/LICENSE][file:http://img.shields.io/badge/license-BSD3-brightgreen.svg]]
 
 * Agda Snippets
 
-This library provides a very simple function that translates just the code blocks
+These libraries allow you to use Literate Agda for formats not natively supported
+by the Agda compiler, such as Pandoc Markdown. It's made of two components, ~agda-snippets~,
+which provides the main functionality for arbitrary text documents, and ~agda-snippets-hakyll~,
+which provides convenience integration for Hakyll pages.
+
+** ~agda-snippets~ 
+
+[[http://hackage.haskell.org/package/agda-snippets][file:https://img.shields.io/hackage/v/agda-snippets.svg]]
+
+Provides a very simple function that translates just the code blocks
 of a literate Agda file to colourised, hyperlinked HTML. The output of this
 can then be run through Pandoc or other document processors to allow literate 
 Agda to be comfortably written in any format that allows inline HTML snippets.
@@ -25,19 +34,29 @@ the exact Agda version it corresponds to, and thus it doesn't follow the PVP.
 To see what the output looks like, you can look at [[http://liamoc.net/posts/2015-08-23-verified-compiler.html][this article]] on my blog, which
 makes use of this library to render the Agda snippets.
 
+** ~agda-snippets-hakyll~ 
+
+[[http://hackage.haskell.org/package/agda-snippets-hakyll][file:https://img.shields.io/hackage/v/agda-snippets-hakyll.svg]]
+
+This library provides various compilers for ~lagda~ documents, that uses Pandoc
+to compile the text in the literate Agda document, and ~agda-snippets~ to render the HTML 
+in the blocks. It should mostly be a drop-in replacement for compilers such as the basic
+Pandoc compiler.
+
 ** Building/Installing
 
-You can install this library and the document processing tool from Hackage 
+You can install these libraries and the document processing tool from Hackage 
 using ~stack~:
 
 #+BEGIN_SRC sh
-stack install agda-snippets
+stack install agda-snippets # resp agda-snippets-hakyll
 #+END_SRC
 
 or using Cabal:
 
 #+BEGIN_SRC sh
-cabal install agda-snippets
+cabal update
+cabal install agda-snippets # resp agda-snippets-hakyll
 #+END_SRC
 
 If you want to use the development version from this repository,
@@ -47,7 +66,9 @@ repository, and use ~stack~ to build the library.
 
 ** Using
 
-*** The executable
+*** ~agda-snippets~
+
+**** The executable
 
 The executable ~agda-snippets~, once installed, can be invoked according to the following schema:
 
@@ -69,12 +90,25 @@ The arguments are as follows:
 - ~/lib/uri/~  - The base URI where Agda library listings are located. This is for hyperlinks for sources imported from (e.g) the Agda standard library.
 - ~[agda options]~ - Any additional options are passed directly into Agda.
 
-*** As a library
+**** As a library
 
 The library interface consists of a single function, ~renderAgdaSnippets~, which has an interface more or less exactly like the executable above.
 
 See the [[http://hackage.haskell.org/package/agda-snippets][Haddocks]] in the Hackage listing for more details.
 
+*** ~agda-snippets-hakyll~
+
+A basic example is as follows:
+
+#+BEGIN_SRC haskell
+main = do
+   hakyll $
+     match "posts/*.lagda" $ do
+       route $ setExtension "html"
+       compile $ literateAgdaCompiler defaultOptions Markdown nullURI
+#+END_SRC
+
+A variety of other compilers exist to add pandoc options or arbitrary document transformations. See the haddocks for details.
 
 ** Credits
 
