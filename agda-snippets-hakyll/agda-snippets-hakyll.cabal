@@ -1,5 +1,5 @@
 name:                agda-snippets-hakyll
-version:             0.1.2.1
+version:             0.1.2.2
 synopsis:            Literate Agda support using agda-snippets, for Hakyll pages.
 description:         This library provides basic functions to use in Hakyll web-pages to generate
                      colourised and hyperlinked Agda source code snippets for literate Agda documents.
@@ -17,13 +17,13 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 library
-  build-depends:       base >=4.7 && <4.9, agda-snippets >= 2.4.2.4
+  build-depends:       base >=4.7 && <4.10, agda-snippets >= 2.4.2.4
                ,       network-uri >= 2.6 && < 2.7
-               ,       hakyll >= 4.6 && < 4.9
-               ,       pandoc-types >=1.12 && <1.18
-               ,       pandoc >= 1.13 && < 1.18
+               ,       hakyll >= 4.6 && < 4.10
+               ,       pandoc-types >=1.12 && <1.20
+               ,       pandoc >= 1.13 && < 1.20
                ,       filepath >= 1.3 && < 1.5
-               ,       directory >= 1.2 && < 1.3
+               ,       directory >= 1.2 && < 1.4
   hs-source-dirs:      src
   default-language:    Haskell2010
   exposed-modules:     Hakyll.Contrib.Agda
