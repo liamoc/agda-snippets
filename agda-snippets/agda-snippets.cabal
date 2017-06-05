@@ -33,7 +33,7 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     Agda.Contrib.Snippets
-  build-depends:       base >= 4.7 && < 4.10
+  build-depends:       base >= 4.8 && < 4.10
                ,       Agda == 2.5.2
                ,       xhtml >= 3000.2.1 && <3000.3
                ,       network-uri >= 2.6 && < 2.7
