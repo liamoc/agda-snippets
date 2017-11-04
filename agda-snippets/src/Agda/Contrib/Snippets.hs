@@ -35,7 +35,7 @@ import           Agda.Utils.Lens
 checkFile :: AbsolutePath -> TCM TopLevelModuleName
 checkFile file =
     do TCM.resetState
-       toTopLevelModuleName . TCM.iModuleName . fst <$> Imp.typeCheckMain file
+       toTopLevelModuleName . TCM.iModuleName . fst <$> Imp.typeCheckMain file Imp.TypeCheck
 
 getModule :: TopLevelModuleName -> TCM (HighlightingInfo, String)
 getModule m =
@@ -119,9 +119,10 @@ annotate libs m pos mi = anchor ! attributes
     -- Notes are not included.
     noteClasses _ = []
 
-    link (m', pos') =  if m == m'
-                      then Just [href ("#" ++ show pos')]
-                      else Just [href (show (tostdliblink m') ++ "#" ++ show pos')]
+    link DefinitionSite {defSiteModule = m', defSitePos = pos'} =
+        if m == m'
+           then Just [href ("#" ++ show pos')]
+           else Just [href (show (tostdliblink m') ++ "#" ++ show pos')]
     tostdliblink mn = fromMaybe nullURI (parseURIReference (intercalate "." (moduleNameParts mn ++ ["html"])))
                        `nonStrictRelativeTo`  libs
 
